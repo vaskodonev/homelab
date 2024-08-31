@@ -1,0 +1,42 @@
+
+---
+- name: Windows Update Playbook
+  hosts: all
+  tasks:
+
+    - name: Set PowerShell Execution Policy to bypass for this session
+      win_shell: |
+        Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+
+    - name: Ensure PSWindowsUpdate module is installed
+      win_shell: |
+        if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
+          Install-Module -Name PSWindowsUpdate -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck
+        }
+
+    - name: Import PSWindowsUpdate module
+      win_shell: |
+        Import-Module PSWindowsUpdate
+
+    - name: Get list of Security and Critical updates
+      win_shell: |
+        $updates = Get-WindowsUpdate -Category 'Security Updates', 'Critical Updates' -ErrorAction Ignore
+        $updates | Out-File -FilePath "C:\Windows\AvailableUpdates.txt" -Encoding utf8
+      register: update_list
+
+    - name: Display Available Updates (Debug)
+      debug:
+        var: update_list.stdout_lines
+
+    - name: Install Security and Critical Updates only
+      win_shell: |
+        Install-WindowsUpdate -Category 'Security Updates', 'Critical Updates' -AcceptAll -Install -AutoReboot -ErrorAction Ignore
+      become: yes
+      become_method: runas
+      become_user: administrator@lab.com
+      register: wu_job
+
+    - name: Display Windows Update Job Results
+      debug:
+        var: wu_job.stdout_lines
+
