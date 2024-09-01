@@ -1,8 +1,11 @@
-- name: Disable firewall for Domain, Public and Private profiles
-  community.windows.win_firewall:
-    state: disabled
-    profiles:
-    - Domain
-    - Private
-    - Public
-  tags: disable_firewall
+- name: "Windows Firewall"
+  hosts: 192.168.200.160
+  tasks:
+    - name: "Disable Windows Firewall"
+      win_firewall:
+        state: disabled
+        profiles:
+        - Domain
+        - Private
+        - Public
+      tags: disable_firewall
