@@ -1,0 +1,1 @@
+ansible-playbook -i inventory.yml disable_firewall - run playbook
