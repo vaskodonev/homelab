@@ -1,4 +1,5 @@
-ansible-playbook -i inventory.yml disable_firewall - run playbook
+run playbook
+  ansible-playbook -i inventory.yml disable_firewall
 
 git repo update
   git add "filename'
