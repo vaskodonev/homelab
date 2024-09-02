@@ -1,4 +1,4 @@
-[dev]
+[Windows]
 192.168.200.160
 [all:vars]
 ansible_user=administrator@lab.com
