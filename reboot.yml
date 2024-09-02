@@ -1,6 +1,6 @@
 ---
-- name: win_reboot module Playbook
-  hosts: all
+- name: win_reboot module Playbook  run:ansible-playbook -i inventory.yml reboot.yml
+  hosts: 192.168.200.160
   become: false
   gather_facts: false
   tasks:
