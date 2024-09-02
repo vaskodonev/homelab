@@ -1,0 +1,15 @@
+---
+
+- hosts: 192.168.200.160
+
+  tasks:
+
+  - name: Copy File
+
+    win_copy:
+
+      src: C:\output.txt
+
+      dest: C:\users\
+     
+      remote_src: yes
