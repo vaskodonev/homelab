@@ -1,0 +1,7 @@
+---
+- name: " Windows TimeZone"
+  hosts: 192.168.200.160
+  tasks:
+    - name: "Set the TimeZone"
+      win_timezone:
+         timezone: "AUS Eastern Standard Time" 
