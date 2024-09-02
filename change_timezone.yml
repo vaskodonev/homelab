@@ -1,5 +1,5 @@
 ---
-- name: " Windows TimeZone"
+- name: Windows TimeZone  run:ansible-playbook -i inventory.yml change_timezone.yml
   hosts: 192.168.200.160
   tasks:
     - name: "Set the TimeZone"
