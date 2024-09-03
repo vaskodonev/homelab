@@ -11,4 +11,4 @@
     - name: Install MSI
       win_package:
         path: C:\ansible\ZoomInstallerFull.msi
-        state: presen
+        state: present
