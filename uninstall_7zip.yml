@@ -1,0 +1,12 @@
+---
+- name: Uninstall 7 Zip
+  hosts: all
+
+  tasks:
+
+      - name: Uninstall 7 Zip
+        win_package:
+          path: C:\Program Files\7-Zip\Uninstall.exe
+          product_id: 7-zip
+          arguments: /S
+          state: absent
