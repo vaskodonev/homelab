@@ -1,0 +1,16 @@
+---
+- name: Installing Notepad++
+  hosts: all
+
+  tasks:
+    - name: Download the Notepad++ exe
+      win_get_url:
+        url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.6.7/npp.8.6.7.Installer.x64.exe
+        dest: c:\ansible\npp.8.6.7.Installer.x64.exe
+
+    - name: Install Notepad++
+      win_package:
+        path: C:\ansible\npp.8.6.7.Installer.x64.exe
+        product_id: 7-Zip
+        arguments: /S
+        state: present
