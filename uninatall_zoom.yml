@@ -3,7 +3,7 @@
   hosts: all
 
   tasks:
-#    - name: Download the ZOOM installer
+#    - name: Download the ZOOM installer - In case the MSI is not on the computer
 #      win_get_url:
 #        url: https://zoom.us/client/latest/ZoomInstallerFull.msi
 #        dest: c:\ansible\ZoomInstallerFull.msi
