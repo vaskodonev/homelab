@@ -1,6 +1,7 @@
 ---
 - name: Installing ZOOM
- 
+  hosts: all
+
   tasks:
     - name: Download the ZOOM installer
       win_get_url:
@@ -8,6 +9,6 @@
         dest: c:\ansible\ZoomInstallerFull.msi
 
     - name: Install MSI
-      win_package: 
+      win_package:
         path: C:\ansible\ZoomInstallerFull.msi
-        state: present
+        state: presen
